@@ -44,8 +44,8 @@ CFLAGS += -Wold-style-definition
 #CFLAGS += -Wno-misleading-indentation
 
 TARGET=test$(TARGET_EXTENSION)
-SRC_FILES=$(UNITY_ROOT)/src/unity.c $(UNITY_ROOT)/extras/fixture/src/unity_fixture.c test/LedDriverTest.c test/LedDriverTestRunner.c AllTests.c src/LedDriver.c
-INC_DIRS=-Isrc -I$(UNITY_ROOT)/src -I$(UNITY_ROOT)/extras/fixture/src -I$(UNITY_ROOT)/extras/memory/src
+SRC_FILES=$(UNITY_ROOT)/src/unity.c $(UNITY_ROOT)/extras/fixture/src/unity_fixture.c test/LedDriverTest.c test/LedDriverTestRunner.c test/mocks/RuntimeErrorStub.c AllTests.c src/LedDriver.c
+INC_DIRS=-Isrc -I$(UNITY_ROOT)/src -Itest/mocks -I$(UNITY_ROOT)/extras/fixture/src -I$(UNITY_ROOT)/extras/memory/src -Iinclude/util
 SYMBOLS=
 
 all: clean default
