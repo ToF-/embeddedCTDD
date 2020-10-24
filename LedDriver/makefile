@@ -25,7 +25,7 @@ ifeq ($(shell uname -s), Darwin)
 C_COMPILER=clang
 endif
 
-UNITY_ROOT=../..
+UNITY_ROOT=unity
 
 CFLAGS=-std=c89
 CFLAGS += -Wall
@@ -41,11 +41,12 @@ CFLAGS += -Wno-unknown-pragmas
 CFLAGS += -Wstrict-prototypes
 CFLAGS += -Wundef
 CFLAGS += -Wold-style-definition
+CFLAGS += -v
 #CFLAGS += -Wno-misleading-indentation
 
-TARGET_BASE=test
-SRC_FILES=$(UNITY_ROOT)/src/unity.c src/LedDriver.c test/LedDriverTest.c test/LedDriverTestRunner.c allTests.c
-INC_DIRS=-Isrc -I$(UNITY_ROOT)/src
+TARGET=test$(TARGET_EXTENSION)
+SRC_FILES=$(UNITY_ROOT)/src/unity.c $(UNITY_ROOT)/extras/fixture/src/unity_fixture.c test/LedDriverTest.c test/LedDriverTestRunner.c AllTests.c
+INC_DIRS=-Isrc -I$(UNITY_ROOT)/src -I$(UNITY_ROOT)/extras/fixture/src -I$(UNITY_ROOT)/extras/memory/src
 SYMBOLS=
 
 all: clean default
